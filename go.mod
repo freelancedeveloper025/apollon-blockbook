@@ -1,4 +1,4 @@
-module github.com/trezor/blockbook
+module github.com/stepollo2/apollon-blockbook
 
 go 1.13
 
