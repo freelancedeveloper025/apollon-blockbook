@@ -42,7 +42,7 @@ RUN \
     mkdir -p $GOPATH/src/github.com/stepollo2 && \
     cd $GOPATH/src/github.com/stepollo2 && \
     git clone https://github.com/stepollo2/apollon-blockbook.git && \
-    cd blockbook && \
+    cd apollon-blockbook && \
     env GO111MODULE=on go mod vendor && \
     cp -r vendor /build/vendor
 
