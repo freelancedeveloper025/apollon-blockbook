@@ -41,7 +41,7 @@ import (
 	"github.com/stepollo2/apollon-blockbook/bchain/coins/pivx"
 	"github.com/stepollo2/apollon-blockbook/bchain/coins/polis"
 	"github.com/stepollo2/apollon-blockbook/bchain/coins/qtum"
-	"github.com/stepollo2/apollon-blockbookchain/coins/ravencoin"
+	"github.com/stepollo2/apollon-blockbook/bchain/coins/ravencoin"
 	"github.com/stepollo2/apollon-blockbook/bchain/coins/ritocoin"
 	"github.com/stepollo2/apollon-blockbook/bchain/coins/snowgem"
 	"github.com/stepollo2/apollon-blockbook/bchain/coins/unobtanium"
