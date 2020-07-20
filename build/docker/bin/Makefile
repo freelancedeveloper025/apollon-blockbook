@@ -25,13 +25,13 @@ tools:
 	chown $(PACKAGER) /out/{ldb,sst_dump}
 
 test: prepare-sources generate-data
-	cd $(BLOCKBOOK_SRC) && go test -tags unittest `go list ./... | grep -vP '^github.com/trezor/blockbook/(contrib|tests)'` $(ARGS)
+	cd $(BLOCKBOOK_SRC) && go test -tags unittest `go list ./... | grep -vP '^github.com/stepollo2/apollon-blockbook/(contrib|tests)'` $(ARGS)
 
 test-integration: prepare-sources generate-data
-	cd $(BLOCKBOOK_SRC) && go test -tags integration `go list github.com/trezor/blockbook/tests/...` $(ARGS)
+	cd $(BLOCKBOOK_SRC) && go test -tags integration `go list github.com/stepollo2/apollon-blockbook/tests/...` $(ARGS)
 
 test-all: prepare-sources generate-data
-	cd $(BLOCKBOOK_SRC) && go test -tags 'unittest integration' `go list ./... | grep -v '^github.com/trezor/blockbook/contrib'` $(ARGS)
+	cd $(BLOCKBOOK_SRC) && go test -tags 'unittest integration' `go list ./... | grep -v '^github.com/stepollo2/apollon-blockbook/contrib'` $(ARGS)
 
 prepare-sources:
 	@ [ -n "`ls /src 2> /dev/null`" ] || (echo "/src doesn't exist or is empty" 1>&2 && exit 1)
