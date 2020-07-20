@@ -40,7 +40,7 @@ RUN \
     cleanup() { rm -rf $GOPATH/src/github.com/stepollo2 ; } && \
     trap cleanup EXIT && \
     mkdir -p $GOPATH/src/github.com/stepollo2 && \
-    cd $GOPATH/src/github.com/trezor && \
+    cd $GOPATH/src/github.com/stepollo2 && \
     git clone https://github.com/stepollo2/apollon-blockbook.git && \
     cd blockbook && \
     env GO111MODULE=on go mod vendor && \
