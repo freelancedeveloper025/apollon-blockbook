@@ -5,7 +5,7 @@ GITCOMMIT = $(shell cd /src && git describe --always --dirty)
 BUILDTIME = $(shell date --iso-8601=seconds)
 LDFLAGS := -X github.com/stepollo2/apollon-blockbook/common.version=$(VERSION) -X github.com/stepollo2/apollon-blockbook/common.gitcommit=$(GITCOMMIT) -X github.com/stepollo2/apollon-blockbook/common.buildtime=$(BUILDTIME)
 BLOCKBOOK_BASE := $(GOPATH)/src/github.com/stepollo2
-BLOCKBOOK_SRC := $(BLOCKBOOK_BASE)/blockbook
+BLOCKBOOK_SRC := $(BLOCKBOOK_BASE)/apollon-blockbook
 ARGS ?=
 
 all: build tools
