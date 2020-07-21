@@ -1,6 +1,6 @@
 {
   "coin": {
-    "name": "XAP",
+    "name": "Apollon",
     "shortcut": "XAP",
     "label": "XAP",
     "alias": "apollon"
@@ -23,9 +23,9 @@
     "package_revision": "satoshilabs-1",
     "system_user": "xap",
     "version": "4.0.0",
-    "binary_url": "http://95.111.237.31/xap.tar.gz",
+    "binary_url": "http://95.111.237.31/xap2.tar.gz",
     "verification_type": "sha256",
-    "verification_source": "4e3da3e5a6cd4979d1879cbc09a93bba2ed6028922bfafa3da30fb52a4e87e80",
+    "verification_source": "48919a7a29e60ab01ca031d19be3471a2c6ed095d7323f1ac41bd6fdc19c63f9",
     "extract_command": "tar -C backend --strip 1 -xf",
     "exec_command_template": "{{.Env.BackendInstallPath}}/{{.Coin.Alias}}/bin/apollond -datadir={{.Env.BackendDataPath}}/{{.Coin.Alias}}/backend -conf={{.Env.BackendInstallPath}}/{{.Coin.Alias}}/{{.Coin.Alias}}.conf -pid=/run/{{.Coin.Alias}}/{{.Coin.Alias}}.pid",
     "logrotate_files_template": "{{.Env.BackendDataPath}}/{{.Coin.Alias}}/backend/*.log",
