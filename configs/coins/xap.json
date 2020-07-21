@@ -3,7 +3,7 @@
     "name": "XAP",
     "shortcut": "XAP",
     "label": "XAP",
-    "alias": "Apollon"
+    "alias": "apollon"
   },
   "ports": {
     "backend_rpc": 8049,
