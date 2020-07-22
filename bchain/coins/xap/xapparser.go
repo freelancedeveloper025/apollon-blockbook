@@ -24,13 +24,13 @@ func init() {
 	MainNetParams.ScriptHashAddrID = []byte{85}
 }
 
-type ApollonParser struct {
+type XapParser struct {
 	*btc.BitcoinParser
 	baseparser *bchain.BaseParser
 }
 
-func NewApollonParser(params *chaincfg.Params, c *btc.Configuration) *ApollonParser {
-	return &ApollonParser{BitcoinParser: btc.NewBitcoinParser(params, c), baseparser: &bchain.BaseParser{}}
+func NewXapParser(params *chaincfg.Params, c *btc.Configuration) *XapParser {
+	return &XapParser{BitcoinParser: btc.NewBitcoinParser(params, c), baseparser: &bchain.BaseParser{}}
 }
 
 func GetChainParams(chain string) *chaincfg.Params {
@@ -43,10 +43,10 @@ func GetChainParams(chain string) *chaincfg.Params {
 	return &MainNetParams
 }
 
-func (p *ApollonParser) PackTx(tx *bchain.Tx, height uint32, blockTime int64) ([]byte, error) {
+func (p *XapParser) PackTx(tx *bchain.Tx, height uint32, blockTime int64) ([]byte, error) {
 	return p.baseparser.PackTx(tx, height, blockTime)
 }
 
-func (p *ApollonParser) UnpackTx(buf []byte) (*bchain.Tx, uint32, error) {
+func (p *XapParser) UnpackTx(buf []byte) (*bchain.Tx, uint32, error) {
 	return p.baseparser.UnpackTx(buf)
 }
