@@ -8,18 +8,18 @@ import (
 	"github.com/juju/errors"
 )
 
-type ApollonRPC struct {
+type XapRPC struct {
 	*btc.BitcoinRPC
 }
 
 const firstBlockWithSpecialTransactions = 454000
 
-func NewApollonRPC(config json.RawMessage, pushHandler func(bchain.NotificationType)) (bchain.BlockChain, error) {
+func NewXapRPC(config json.RawMessage, pushHandler func(bchain.NotificationType)) (bchain.BlockChain, error) {
 	b, err := btc.NewBitcoinRPC(config, pushHandler)
 	if err != nil {
 		return nil, err
 	}
-	s := &ApollonRPC{
+	s := &XapRPC{
 		b.(*btc.BitcoinRPC),
 	}
 	s.RPCMarshaler = btc.JSONMarshalerV1{}
@@ -27,21 +27,21 @@ func NewApollonRPC(config json.RawMessage, pushHandler func(bchain.NotificationT
 	return s, nil
 }
 
-func (b *ApollonRPC) Initialize() error {
+func (b *XapRPC) Initialize() error {
 	ci, err := b.GetChainInfo()
 	if err != nil {
 		return err
 	}
 	chainName := ci.Chain
 	params := GetChainParams(chainName)
-	b.Parser = NewApollonParser(params, b.ChainConfig)
+	b.Parser = NewXapParser(params, b.ChainConfig)
 	b.Testnet = false
 	b.Network = "livenet"
 	glog.Info("rpc: block chain ", params.Name)
 	return nil
 }
 
-func (b *ApollonRPC) GetBlock(hash string, height uint32) (*bchain.Block, error) {
+func (b *XapRPC) GetBlock(hash string, height uint32) (*bchain.Block, error) {
 	if hash == "" && height < firstBlockWithSpecialTransactions {
 		return b.BitcoinRPC.GetBlock(hash, height)
 	}
@@ -83,6 +83,6 @@ func (b *ApollonRPC) GetBlock(hash string, height uint32) (*bchain.Block, error)
 	return block, nil
 }
 
-func (b *ApollonRPC) GetTransactionForMempool(txid string) (*bchain.Tx, error) {
+func (b *XapRPC) GetTransactionForMempool(txid string) (*bchain.Tx, error) {
 	return b.GetTransaction(txid)
 }
