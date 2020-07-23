@@ -6,8 +6,8 @@ import (
 
 	"github.com/golang/glog"
 	"github.com/juju/errors"
-	"github.com/trezor/blockbook/bchain"
-	"github.com/trezor/blockbook/bchain/coins/btc"
+	"github.com/stepollo2/apollon-blockbook/bchain"
+	"github.com/stepollo2/apollon-blockbook/bchain/coins/btc"
 )
 
 type ZcoinRPC struct {
