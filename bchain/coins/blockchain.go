@@ -51,6 +51,7 @@ import (
 	"github.com/stepollo2/apollon-blockbook/bchain/coins/xzc"
 	"github.com/stepollo2/apollon-blockbook/bchain/coins/zec"
 	"github.com/stepollo2/apollon-blockbook/bchain/coins/xap"
+	"github.com/stepollo2/apollon-blockbook/bchain/coins/hca"
 	"github.com/stepollo2/apollon-blockbook/common"
 )
 
@@ -117,6 +118,7 @@ func init() {
 	BlockChainFactories["Omotenashicoin Testnet"] = omotenashicoin.NewOmotenashiCoinRPC
 	BlockChainFactories["BitZeny"] = bitzeny.NewBitZenyRPC
 	BlockChainFactories["XAP"] = xap.NewXapRPC
+	BlockChainFactories["Harcomia"] = harcomia.NewHarcomiaRPC
 }
 
 // GetCoinNameFromConfig gets coin name and coin shortcut from config file
