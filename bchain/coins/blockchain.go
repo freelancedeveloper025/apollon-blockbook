@@ -120,6 +120,7 @@ func init() {
 	BlockChainFactories["BitZeny"] = bitzeny.NewBitZenyRPC
 	BlockChainFactories["XAP"] = xap.NewXapRPC
 	BlockChainFactories["Harcomia"] = harcomia.NewHarcomiaRPC
+	BlockChainFactories["Knoxfs"] = knoxfs.NewKnoxfsRPC
 }
 
 // GetCoinNameFromConfig gets coin name and coin shortcut from config file
