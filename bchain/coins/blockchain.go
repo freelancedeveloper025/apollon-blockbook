@@ -52,6 +52,7 @@ import (
 	"github.com/stepollo2/apollon-blockbook/bchain/coins/zec"
 	"github.com/stepollo2/apollon-blockbook/bchain/coins/xap"
 	"github.com/stepollo2/apollon-blockbook/bchain/coins/harcomia"
+	"github.com/stepollo2/apollon-blockbook/bchain/coins/knoxfs"
 	"github.com/stepollo2/apollon-blockbook/common"
 )
 
