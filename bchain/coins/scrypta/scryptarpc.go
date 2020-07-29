@@ -8,18 +8,18 @@ import (
 	"github.com/juju/errors"
 )
 
-type XapRPC struct {
+type ScryptaRPC struct {
 	*btc.BitcoinRPC
 }
 
 const firstBlockWithSpecialTransactions = 454000
 
-func NewXapRPC(config json.RawMessage, pushHandler func(bchain.NotificationType)) (bchain.BlockChain, error) {
+func NewScryptaRPC(config json.RawMessage, pushHandler func(bchain.NotificationType)) (bchain.BlockChain, error) {
 	b, err := btc.NewBitcoinRPC(config, pushHandler)
 	if err != nil {
 		return nil, err
 	}
-	s := &XapRPC{
+	s := &ScryptaRPC{
 		b.(*btc.BitcoinRPC),
 	}
 	s.RPCMarshaler = btc.JSONMarshalerV1{}
@@ -27,7 +27,7 @@ func NewXapRPC(config json.RawMessage, pushHandler func(bchain.NotificationType)
 	return s, nil
 }
 
-func (b *XapRPC) Initialize() error {
+func (b *ScryptaRPC) Initialize() error {
 	ci, err := b.GetChainInfo()
 	if err != nil {
 		return err
@@ -41,7 +41,7 @@ func (b *XapRPC) Initialize() error {
 	return nil
 }
 
-func (b *XapRPC) GetBlock(hash string, height uint32) (*bchain.Block, error) {
+func (b *ScryptaRPC) GetBlock(hash string, height uint32) (*bchain.Block, error) {
 	if hash == "" && height < firstBlockWithSpecialTransactions {
 		return b.BitcoinRPC.GetBlock(hash, height)
 	}
@@ -83,6 +83,6 @@ func (b *XapRPC) GetBlock(hash string, height uint32) (*bchain.Block, error) {
 	return block, nil
 }
 
-func (b *XapRPC) GetTransactionForMempool(txid string) (*bchain.Tx, error) {
+func (b *ScryptaRPC) GetTransactionForMempool(txid string) (*bchain.Tx, error) {
 	return b.GetTransaction(txid)
 }
