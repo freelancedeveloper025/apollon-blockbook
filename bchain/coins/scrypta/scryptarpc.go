@@ -34,7 +34,7 @@ func (b *ScryptaRPC) Initialize() error {
 	}
 	chainName := ci.Chain
 	params := GetChainParams(chainName)
-	b.Parser = NewXapParser(params, b.ChainConfig)
+	b.Parser = NewScryptaParser(params, b.ChainConfig)
 	b.Testnet = false
 	b.Network = "livenet"
 	glog.Info("rpc: block chain ", params.Name)
