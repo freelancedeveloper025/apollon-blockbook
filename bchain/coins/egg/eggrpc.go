@@ -8,18 +8,18 @@ import (
 	"github.com/juju/errors"
 )
 
-type ScryptaRPC struct {
+type EggRPC struct {
 	*btc.BitcoinRPC
 }
 
 const firstBlockWithSpecialTransactions = 454000
 
-func NewScryptaRPC(config json.RawMessage, pushHandler func(bchain.NotificationType)) (bchain.BlockChain, error) {
+func NewEggRPC(config json.RawMessage, pushHandler func(bchain.NotificationType)) (bchain.BlockChain, error) {
 	b, err := btc.NewBitcoinRPC(config, pushHandler)
 	if err != nil {
 		return nil, err
 	}
-	s := &ScryptaRPC{
+	s := &EggRPC{
 		b.(*btc.BitcoinRPC),
 	}
 	s.RPCMarshaler = btc.JSONMarshalerV1{}
@@ -27,21 +27,21 @@ func NewScryptaRPC(config json.RawMessage, pushHandler func(bchain.NotificationT
 	return s, nil
 }
 
-func (b *ScryptaRPC) Initialize() error {
+func (b *EggRPC) Initialize() error {
 	ci, err := b.GetChainInfo()
 	if err != nil {
 		return err
 	}
 	chainName := ci.Chain
 	params := GetChainParams(chainName)
-	b.Parser = NewScryptaParser(params, b.ChainConfig)
+	b.Parser = NewEggParser(params, b.ChainConfig)
 	b.Testnet = false
 	b.Network = "livenet"
 	glog.Info("rpc: block chain ", params.Name)
 	return nil
 }
 
-func (b *ScryptaRPC) GetBlock(hash string, height uint32) (*bchain.Block, error) {
+func (b *EggRPC) GetBlock(hash string, height uint32) (*bchain.Block, error) {
 	if hash == "" && height < firstBlockWithSpecialTransactions {
 		return b.BitcoinRPC.GetBlock(hash, height)
 	}
@@ -83,6 +83,6 @@ func (b *ScryptaRPC) GetBlock(hash string, height uint32) (*bchain.Block, error)
 	return block, nil
 }
 
-func (b *ScryptaRPC) GetTransactionForMempool(txid string) (*bchain.Tx, error) {
+func (b *EggRPC) GetTransactionForMempool(txid string) (*bchain.Tx, error) {
 	return b.GetTransaction(txid)
 }
