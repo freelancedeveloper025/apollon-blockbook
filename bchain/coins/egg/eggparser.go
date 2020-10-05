@@ -1,4 +1,4 @@
-package scrypta
+package egg
 
 import (
 	"github.com/stepollo2/apollon-blockbook/bchain"
