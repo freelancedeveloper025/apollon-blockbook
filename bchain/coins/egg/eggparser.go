@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	MainnetMagic wire.BitcoinNet = 0xe92caf4c
+	MainnetMagic wire.BitcoinNet = 0x0132a843
 )
 
 var (
@@ -20,16 +20,16 @@ func init() {
 	MainNetParams = chaincfg.MainNetParams
 	MainNetParams.Net = MainnetMagic
 
-	MainNetParams.PubKeyHashAddrID = []byte{48}
-	MainNetParams.ScriptHashAddrID = []byte{13}
+	MainNetParams.PubKeyHashAddrID = []byte{33}
+	MainNetParams.ScriptHashAddrID = []byte{34}
 }
 
-type ScryptaParser struct {
+type EggParser struct {
 	*btc.BitcoinParser
 	baseparser *bchain.BaseParser
 }
 
-func NewScryptaParser(params *chaincfg.Params, c *btc.Configuration) *ScryptaParser {
+func NewEggParser(params *chaincfg.Params, c *btc.Configuration) *EggParser {
 	return &ScryptaParser{BitcoinParser: btc.NewBitcoinParser(params, c), baseparser: &bchain.BaseParser{}}
 }
 
@@ -43,10 +43,10 @@ func GetChainParams(chain string) *chaincfg.Params {
 	return &MainNetParams
 }
 
-func (p *ScryptaParser) PackTx(tx *bchain.Tx, height uint32, blockTime int64) ([]byte, error) {
+func (p *EggParser) PackTx(tx *bchain.Tx, height uint32, blockTime int64) ([]byte, error) {
 	return p.baseparser.PackTx(tx, height, blockTime)
 }
 
-func (p *ScryptaParser) UnpackTx(buf []byte) (*bchain.Tx, uint32, error) {
+func (p *EggParser) UnpackTx(buf []byte) (*bchain.Tx, uint32, error) {
 	return p.baseparser.UnpackTx(buf)
 }
