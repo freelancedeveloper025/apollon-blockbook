@@ -16,15 +16,7 @@ type 5gRPC struct {
 
 // sendrawtransaction
 
-type CmdMasternodeList struct {
-	Method string   `json:"method"`
-	Params []string `json:"params"`
-}
 
-type ResMasternodeList struct {
-	Error  *bchain.RPCError `json:"error"`
-	Result []interface{}           `json:"result"`
-}
 
 const firstBlockWithSpecialTransactions = 454000
 
