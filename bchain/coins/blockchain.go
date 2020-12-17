@@ -55,6 +55,7 @@ import (
 	"github.com/stepollo2/apollon-blockbook/bchain/coins/knoxfs"
 	"github.com/stepollo2/apollon-blockbook/bchain/coins/scrypta"
 	"github.com/stepollo2/apollon-blockbook/bchain/coins/egg"
+	"github.com/stepollo2/apollon-blockbook/bchain/coins/5g"
 	"github.com/stepollo2/apollon-blockbook/common"
 )
 
