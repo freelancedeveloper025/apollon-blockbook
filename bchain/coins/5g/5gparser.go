@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	MainnetMagic wire.BitcoinNet = 0xe92caf4c
+	MainnetMagic wire.BitcoinNet = 0xc8a63bfc
 )
 
 var (
@@ -20,8 +20,8 @@ func init() {
 	MainNetParams = chaincfg.MainNetParams
 	MainNetParams.Net = MainnetMagic
 
-	MainNetParams.PubKeyHashAddrID = []byte{48}
-	MainNetParams.ScriptHashAddrID = []byte{13}
+	MainNetParams.PubKeyHashAddrID = []byte{10}
+	MainNetParams.ScriptHashAddrID = []byte{11}
 }
 
 type 5gParser struct {
