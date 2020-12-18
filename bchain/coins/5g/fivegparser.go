@@ -1,4 +1,4 @@
-package 5g
+package fiveg
 
 import (
 	"github.com/stepollo2/apollon-blockbook/bchain"
@@ -24,13 +24,13 @@ func init() {
 	MainNetParams.ScriptHashAddrID = []byte{11}
 }
 
-type 5gParser struct {
+type FivegParser struct {
 	*btc.BitcoinParser
 	baseparser *bchain.BaseParser
 }
 
-func New5gParser(params *chaincfg.Params, c *btc.Configuration) *5gParser {
-	return &5gParser{BitcoinParser: btc.NewBitcoinParser(params, c), baseparser: &bchain.BaseParser{}}
+func NewFivegParser(params *chaincfg.Params, c *btc.Configuration) *FivegParser {
+	return &FivegParser{BitcoinParser: btc.NewBitcoinParser(params, c), baseparser: &bchain.BaseParser{}}
 }
 
 func GetChainParams(chain string) *chaincfg.Params {
@@ -43,10 +43,10 @@ func GetChainParams(chain string) *chaincfg.Params {
 	return &MainNetParams
 }
 
-func (p *5gParser) PackTx(tx *bchain.Tx, height uint32, blockTime int64) ([]byte, error) {
+func (p *FivegParser) PackTx(tx *bchain.Tx, height uint32, blockTime int64) ([]byte, error) {
 	return p.baseparser.PackTx(tx, height, blockTime)
 }
 
-func (p *5gParser) UnpackTx(buf []byte) (*bchain.Tx, uint32, error) {
+func (p *FivegParser) UnpackTx(buf []byte) (*bchain.Tx, uint32, error) {
 	return p.baseparser.UnpackTx(buf)
 }
