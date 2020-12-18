@@ -125,6 +125,8 @@ func init() {
 	BlockChainFactories["Harcomia"] = harcomia.NewHarcomiaRPC
 	BlockChainFactories["Knoxfs"] = knoxfs.NewKnoxfsRPC
 	BlockChainFactories["Scrypta"] = scrypta.NewScryptaRPC
+	BlockChainFactories["Fiveg"] = fiveg.NewFivegRPC
+	BlockChainFactories["Egg"] = egg.NewEggRPC
 }
 
 // GetCoinNameFromConfig gets coin name and coin shortcut from config file
