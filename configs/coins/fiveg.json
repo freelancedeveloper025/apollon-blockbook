@@ -1,9 +1,9 @@
 {
   "coin": {
-    "name": "fiveg",
+    "name": "Fiveg",
     "shortcut": "5G",
     "label": "Fiveg",
-    "alias": "Fiveg"
+    "alias": "fiveg"
   },
   "ports": {
     "backend_rpc": 8049,
