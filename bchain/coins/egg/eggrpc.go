@@ -1,4 +1,4 @@
-package scrypta
+package egg
 
 import (
 	"encoding/json"
