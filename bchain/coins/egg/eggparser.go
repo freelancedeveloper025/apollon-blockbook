@@ -30,7 +30,7 @@ type EggParser struct {
 }
 
 func NewEggParser(params *chaincfg.Params, c *btc.Configuration) *EggParser {
-	return &ScryptaParser{BitcoinParser: btc.NewBitcoinParser(params, c), baseparser: &bchain.BaseParser{}}
+	return &EggParser{BitcoinParser: btc.NewBitcoinParser(params, c), baseparser: &bchain.BaseParser{}}
 }
 
 func GetChainParams(chain string) *chaincfg.Params {
