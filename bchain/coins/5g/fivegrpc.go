@@ -1,5 +1,5 @@
 
-package 5g
+package fiveg
 
 import (
 	"encoding/json"
@@ -10,7 +10,7 @@ import (
 	"github.com/stepollo2/apollon-blockbook/bchain/coins/btc"
 )
 
-type 5gRPC struct {
+type FivegRPC struct {
 	*btc.BitcoinRPC
 }
 
@@ -20,12 +20,12 @@ type 5gRPC struct {
 
 const firstBlockWithSpecialTransactions = 454000
 
-func New5gRPC(config json.RawMessage, pushHandler func(bchain.NotificationType)) (bchain.BlockChain, error) {
+func NewFivegRPC(config json.RawMessage, pushHandler func(bchain.NotificationType)) (bchain.BlockChain, error) {
 	b, err := btc.NewBitcoinRPC(config, pushHandler)
 	if err != nil {
 		return nil, err
 	}
-	s := &5gRPC{
+	s := &FivegRPC{
 		b.(*btc.BitcoinRPC),
 	}
 	s.RPCMarshaler = btc.JSONMarshalerV1{}
@@ -33,21 +33,21 @@ func New5gRPC(config json.RawMessage, pushHandler func(bchain.NotificationType))
 	return s, nil
 }
 
-func (b *5gRPC) Initialize() error {
+func (b *FivegRPC) Initialize() error {
 	ci, err := b.GetChainInfo()
 	if err != nil {
 		return err
 	}
 	chainName := ci.Chain
 	params := GetChainParams(chainName)
-	b.Parser = New5gParser(params, b.ChainConfig)
+	b.Parser = NewFivegParser(params, b.ChainConfig)
 	b.Testnet = false
 	b.Network = "livenet"
 	glog.Info("rpc: block chain ", params.Name)
 	return nil
 }
 
-func (b *5gRPC) GetBlock(hash string, height uint32) (*bchain.Block, error) {
+func (b *FivegRPC) GetBlock(hash string, height uint32) (*bchain.Block, error) {
 	if hash == "" && height < firstBlockWithSpecialTransactions {
 		return b.BitcoinRPC.GetBlock(hash, height)
 	}
@@ -89,6 +89,6 @@ func (b *5gRPC) GetBlock(hash string, height uint32) (*bchain.Block, error) {
 	return block, nil
 }
 
-func (b *5gRPC) GetTransactionForMempool(txid string) (*bchain.Tx, error) {
+func (b *FivegRPC) GetTransactionForMempool(txid string) (*bchain.Tx, error) {
 	return b.GetTransaction(txid)
 }
